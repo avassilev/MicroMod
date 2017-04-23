@@ -614,7 +614,7 @@ $ B $ \> $ 0,3 $ \> $ 0,1 $ \> $ 2,0 $
 We introduce the following notation: if $ s_i $ is the strategy of player $ i $ in a strategy vector $ s $, then the strategies of all the other players in $ s $ will be denoted by $ s_{-i} $.\bigskip
 
 \begin{definition}[Nash equilibrium]\label{def:NashEq}
-A strategy vector $ s^* = (s_1^*,\ldots,s_n^*) $ is a Nash equilibrium if for each player $ i \in N $ and each strategy $ s_i \in S_i $ the following is satisfied:
+A strategy vector $ s^* = (s_1^*,\ldots,s_n^*) $ is a \emph{Nash equilibrium} if for each player $ i \in N $ and each strategy $ s_i \in S_i $ the following is satisfied:
 \begin{equation}
 u_i(s^*)\geq u_i(s_i,s^*_{-i}).
 \label{eq:NE}
@@ -636,6 +636,38 @@ The payoff vector $ u(s^*) = (u_1(s*),\ldots,u_n(s^*) $ is the equilibrium payof
 \item In cases where there is a Nash equilibrium, it need not be unique.
 \end{itemize}
 \end{frame}
+
+
+
+\setcounter{slidenum}{1}
+\begin{frame}[fragile]
+\frametitle{Best replies and Nash equilibria (\arabic{slidenum})}
+\framesubtitle{}
+\begin{itemize}\itemsep1em
+\item An equivalent way of defining a Nash equilibrium is through the concept of a \emph{best reply}.
+\item It is sometimes more convenient to work with best replies since they provide a natural approach to computing Nash equilibria.
+\end{itemize}
+
+\begin{definition}[Best reply]\label{def:BR}
+Let $ s_{-i} $ be a strategy vector of all the players except player $ i $. Player $ i $'s strategy $ s_i $ is called a \emph{best reply} to $ s_{-i} $ if \begin{equation}
+u_i(s_i,s_{-i}) = \max_{t_i \in S_i}u_i(t_i,s_{-i}).
+\label{eq:BR}
+\end{equation}
+\end{definition}
+\end{frame}
+
+
+
+\begin{frame}[fragile]\stepcounter{slidenum}
+\frametitle{Best replies and Nash equilibria (\arabic{slidenum})}
+\framesubtitle{}
+The following definition of a Nash equilibrium can be shown to be \textbf{equivalent} to Definition \ref{def:NashEq}:\bigskip
+
+\begin{definition}[Nash equilibrium]\label{def:NashEq2}
+A strategy vector $ s^* = (s_1^*,\ldots,s_n^*) $ is a \emph{Nash equilibrium} if $ s_i^* $ is a best reply to $ s_{-i}^* $ for every player $ i \in N $.
+\end{definition}
+\end{frame}
+
 
 
 \begin{frame}[fragile]\stepcounter{examplecount}
@@ -940,6 +972,50 @@ Scissors \> $ -1,1 $ \> $ 1,-1 $ \> $ 0,0 $
 \item Check if there are dominated strategies.
 \item Compute all Nash equilibria and verify the claims from the previous slide.
 \end{enumerate}
+\end{frame}
+
+\stepcounter{examplecount}
+\begin{frame}[fragile]\setcounter{slidenum}{1}
+\frametitle{Example \arabic{examplecount}}
+\framesubtitle{Cournot duopoly competition (\arabic{slidenum})}
+\begin{itemize}\itemsep1em
+\item In some cases we need to go beyond the framework of finite games and work with an infinite pure strategy set. 
+\item The Cournot model provides a simple example.
+\item There are two firms operating on a market for a single good. Firm $ i $ produces quantity $ q_i \geq 0$, $ i=1,2 $. Thus, the total quantity supplied is $ q =  q_1 + q_2 $.
+\item The price of the good is determined by demand and can be represented as a function of the total quantity supplied through the relation\footnote{Clearly, a more realistic formulation would be something like $ p = \max\{0,2-q\} $ but we use the simpler one for convenience.}
+\[ p = 2 - q = 2 - q_1 - q_2. \]
+\item The cost per unit of the good is $ c_i > 0 $ for Firm $ i $.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]\stepcounter{slidenum}
+\frametitle{Example \arabic{examplecount}}
+\framesubtitle{Cournot duopoly competition (\arabic{slidenum})}
+\begin{itemize}\itemsep1em
+\item The payoff for Player 1 is his profit, given by 
+\[ u_1(q_1,q_2) = q_1 (2-q_1-q_2) - q_1 c_1 = -q_1^2 + (2-c_1-q_2)q_1 \] and the payoff for Player 2 is analogously 
+\[ u_2(q_1,q_2) = q_2 (2-q_1-q_2) - q_2 c_2 = -q_2^2 + (2-c_2-q_1)q_2 .\]
+\item For a fixed $ q_2 $, Player 1's best reply is given by the maximizing value of $ q_1 $, which is \begin{equation}
+q_1 = \frac{2-c_1-q_2}{2}.
+\label{eq:CournotBR1}
+\end{equation} The best reply of Player 2 to a given $ q_1 $ is similarly \begin{equation}
+q_2 = \frac{2-c_2-q_1}{2} .
+\label{eq:CournotBR2}
+\end{equation} 
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]\stepcounter{slidenum}
+\frametitle{Example \arabic{examplecount}}
+\framesubtitle{Cournot duopoly competition (\arabic{slidenum})}
+\begin{itemize}\itemsep1em
+\item Solving the system of best replies \eqref{eq:CournotBR1} and \eqref{eq:CournotBR2}, we obtain the Nash equilibrium \[ q^*_1 = \dfrac{2-2c_1+c_2}{3},\qquad q^*_2 = \dfrac{2-2c_2+c_1}{3}. \]
+\item In equilibrium the respective payoffs can be shown to be \[ u_1(q_1^*,q_2^*) = (q_1^*)^2 \] and \[ u_2(q_1^*,q_2^*) = (q_2^*)^2 .\]
+\end{itemize}
 \end{frame}
 
 
