@@ -1024,9 +1024,212 @@ q_2 = \frac{2-c_2-q_1}{2} .
 \section{Games in extensive form with perfect information}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Dynamic games in extensive form
-%Subgame perfection
-% Market entry and collusion 
+\begin{frame}[fragile]
+\frametitle{General considerations for games in extensive form}
+\framesubtitle{}
+\begin{itemize}\itemsep1em
+\item If we want to trace explicitly the evolution of play in the course of a dynamic game, then we are back to the case of a game in extensive form.
+\item The concept of Nash equilibrium is valid for such games as well.
+\item We shall only look at the case of extensive-form games with perfect information and focus on pure strategies.
+\end{itemize}
+\end{frame}
+
+\stepcounter{examplecount}\setcounter{slidenum}{1}
+\begin{frame}[fragile]
+\frametitle{Example \arabic{examplecount}}
+\framesubtitle{Market entry (\arabic{slidenum})}
+\begin{itemize}\itemsep1em
+\item Consider the decision of a firm (entrant, Firm E) to enter a new market.
+\item There is another firm (incumbent, Firm I) already operating on that market.
+\item If Firm E decides to stay out of the market (strategy Out), the status quo is preserved.
+\item If Firm E decides to enter the market (strategy In), Firm I has two choices:
+	\begin{itemize}\itemsep1em
+	\item Do nothing (strategy Accommodate), in which case the market is divided between the two firms.
+	\item Engage in a price war (strategy Fight), leading to heavy losses to both firms.
+	\end{itemize} 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]\stepcounter{slidenum}
+\frametitle{Example \arabic{examplecount}}
+\framesubtitle{Market entry (\arabic{slidenum})}
+The extensive-form version of the game is the following:
+\begin{center}
+\includegraphics[width=0.8\linewidth]{Predation_game}
+\end{center}
+\begin{itemize}{\small
+\item There are two pure strategy Nash equilibria in the game.
+\item One equilibrium is (Out, Fight if Firm E chooses ``In'')
+\item The other equilibrium is (In, Accommodate if Firm E chooses ``In'')}
+\end{itemize}
+\end{frame}
+
+
+
+\stepcounter{slidenum}
+\begin{frame}[fragile]
+\frametitle{Example \arabic{examplecount}}
+\framesubtitle{Market entry (\arabic{slidenum})}
+The Nash equilibria can be checked from the strategic-form representation of the game:
+\begin{center}
+\begin{game}{2}{2}[Firm~E][Firm~I]
+ \> Fight if \textbf{E} plays ``In'' \> Accommodate if \textbf{E} plays ``In'' \\
+Out \> $ 0,2 $ \> $ 0,2 $ \\
+In \> $ -3,-1 $ \> $ 2,1 $
+\end{game}
+\end{center}\bigskip
+{\small
+\textbf{Question:} Isn't (Out, Accommodate if Firm E chooses ``In'') a Nash equilibrium as well? \bigskip \pause 
+
+\begin{itemize}
+\item However, one of the two pure strategy Nash equilibria, the equilibrium (Out, Fight if Firm E chooses ``In''), isn't very plausible.
+\item This is because once Firm E has decided to enter, it is not optimal for Firm I to fight.
+\item Firm E can figure that out, so in real life it is likely to enter.
+\end{itemize}}
+\end{frame}
+
+
+\stepcounter{slidenum}
+\begin{frame}[fragile]
+\frametitle{Example \arabic{examplecount}}
+\framesubtitle{Market entry (\arabic{slidenum})}
+\begin{itemize}\itemsep1em
+\item Effectively, what happens in this game is that the incumbent makes an empty threat and the concept of Nash equilibrium implies that the entrant will take it seriously.
+\item By virtue of the sequential nature of the game, under Nash equilibrium Player I can declare that it will do anything in the unreached branch of the game and its statement will affect the decision of the other player.
+\item This suggests that we may want to strengthen our criteria for optimality of play by taking on board the implications of the sequential structure of decision-making in a dynamic game.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{The principle of sequential rationality}
+\framesubtitle{}
+\begin{itemize}\itemsep1em
+\item The previous considerations suggest that equilibrium strategies should specify behaviour that is optimal not only in general but also in a ``piecewise'' manner, from any point in the game onward.
+\item This requirement is known as the \emph{principle of sequential rationality}.
+\item Operationally, the principle of sequential rationality for games of perfect information is implemented by a procedure known as \emph{backward induction}.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Backward induction and subgames}
+\framesubtitle{}
+\begin{itemize}\itemsep1em
+\item Roughly, backward induction means that we solve that game starting from the end and reconstructing optimal behaviour by moving toward the initial node of the game tree.
+\item In order to do that we need a unit for which to consider optimality when going backward.
+\item A natural candidate for such a unit is a subset of the game tree that itself constitutes a game when taken in isolation.
+\item Such a subset is called a \emph{subgame}.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{The backward induction procedure}
+The backward induction procedure can be summarised as follows:
+\begin{enumerate}\itemsep1em
+\item \label{itm:1} Find the minimal subgames containing the terminal nodes and compute their Nash equilibria.
+\item Replace the subgames with the equilibrium payoffs associated with a Nash equilibrium and produce a reduced game. (In case of multiple Nash equilibria the procedure is repeated).
+\item Go to step \ref{itm:1} and repeat the procedure for the new, reduced game. Continue until you have included the subgame containing the initial node.
+\end{enumerate}\bigskip
+
+The collections of moves obtained via the backward induction procedure define strategies that are consistent with the principle of sequential rationality.
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Subgame perfect Nash equilibria}
+\begin{itemize}\itemsep1em
+\item A profile of strategies that induces a Nash equilibrium for every subgame of a given extensive-form game is called a \emph{subgame perfect Nash equilibrium}.
+\item Applying the backward induction procedure to an extensive-form game of perfect information by construction produces a subgame perfect Nash equilibrium.
+\item Every finite game of perfect information has a pure strategy subgame perfect Nash equilibrium. If no player has the same payoffs at any two terminal nodes, then there is a unique subgame perfect Nash equilibrium.
+\end{itemize}
+\end{frame}
+
+
+
+\stepcounter{examplecount}\setcounter{slidenum}{1}
+\begin{frame}[fragile]
+\frametitle{Example \arabic{examplecount}}
+\framesubtitle{Backward induction in action (\arabic{slidenum})}
+Consider the following game:
+\begin{center}
+\includegraphics[width=0.9\linewidth]{Backward_induction_1}
+\end{center}\bigskip
+
+\begin{itemize}{\small
+\item The three subgames containing the terminal nodes all belong to Player 3 and are shown in green.
+\item Solving them (from top to bottom in the figure) reveals that Player 3 will play respectively $ d $, $ d $ and $ u $.
+\item We replace the subgames with the respective payoffs.}
+\end{itemize}
+\end{frame}
+
+
+\stepcounter{slidenum}
+\begin{frame}[fragile]
+\frametitle{Example \arabic{examplecount}}
+\framesubtitle{Backward induction in action (\arabic{slidenum})}
+The resulting reduced game is:
+\begin{center}
+\includegraphics[width=0.9\linewidth]{Backward_induction_2}
+\end{center}\bigskip
+
+\begin{itemize}{\small
+\item The next level subgame belongs to Player 2 and is shown in blue.
+\item The equilibrium in this subgame is $ a $.
+\item We repeat the reduction procedure and replace the subgame with the resulting payoff.}
+\end{itemize}
+\end{frame}
+
+
+\stepcounter{slidenum}
+\begin{frame}[fragile]
+\frametitle{Example \arabic{examplecount}}
+\framesubtitle{Backward induction in action (\arabic{slidenum})}
+The final reduced game is:
+\begin{center}
+\includegraphics[width=0.65\linewidth]{Backward_induction_3}
+\end{center}\bigskip
+
+\begin{itemize}{\small
+\item It is optimal for Player 1 to choose $ D $ in this subgame.
+\item As this is the reduced game containing the initial node, this ends the backward induction procedure.
+\item The final set of payoffs is $ (5,4,4) $ and it will be obtained by the sequence of moves $ D \rightarrow a \rightarrow d $.}
+\end{itemize}
+\end{frame}
+
+
+\stepcounter{slidenum}
+\begin{frame}[fragile]
+\frametitle{Example \arabic{examplecount}}
+\framesubtitle{Backward induction in action (\arabic{slidenum})}
+\begin{itemize}\itemsep1em
+\item Notice, however, that the strategies leading to the above sequence of moves are more complicated. 
+\item These strategies are:
+	\begin{itemize}\itemsep1em
+	\item \textbf{Player 1:} Play $ D $.
+	\item \textbf{Player 2:} Play $ a $ if Player 1 plays $ D $.
+	\item \textbf{Player 3:} Play $ d $ if Player 1 plays $ U $. \newline Play $ d $ if Player 1 plays $ D $ and Player $ 2 $ plays $ a $. \newline Play $ u $ if Player 1 plays $ D $ and Player $ 2 $ plays $ b $.
+	\end{itemize}
+\item The above strategy profile is a subgame perfect Nash equilibrium for the game.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Exercise on the game from Example \arabic{examplecount}}
+\framesubtitle{}
+\begin{enumerate}\itemsep1em
+\item Input the game in Gambit.
+\item Try to compute a Nash equilibrium for the game. Instruct Gambit to compute all Nash equilibria. 
+\item What happens when you explore dominance?
+\end{enumerate}
+\end{frame}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Useful topics not covered in this lecture}
@@ -1047,10 +1250,10 @@ q_2 = \frac{2-c_2-q_1}{2} .
 \frametitle{Equilibrium refinements}
 \begin{itemize}\itemsep1em
 \item Nash equilibrium is a very useful concept but it is not devoid of limitations.
-\item Outcomes that are legitimate Nash equilibria may be deemed unrealistic if assessed on common plausibility grounds.
+\item Outcomes that are legitimate Nash equilibria may be deemed unrealistic if assessed on common plausibility grounds, as the example with the market entry game shows.
 \item These considerations have spawned a branch of game theory focusing on selecting specific equilibria based on additional criteria.
 \item This is known as \emph{equilibrium refinement}.
-\item There exist various equilibrium concepts refining the Nash equilibrium. They are useful in different situations, yet there isn't one universally accepted refinement dominating the game-theoretic literature.
+\item There exist various equilibrium concepts refining the Nash equilibrium. (Subgame perfection is one example.) They are useful in different situations and there isn't one universally established refinement dominating the game-theoretic literature.
 \end{itemize}
 \end{frame}
 
@@ -1061,7 +1264,7 @@ q_2 = \frac{2-c_2-q_1}{2} .
 \item This is not for lack of importance: many problems of practical relevance can be modelled as games of incomplete information.
 \item Examples of these include:
 	\begin{itemize}\itemsep1em
-	\item Market entry
+	\item Market entry with no information on the incumbents' costs
 	\item Trade negotiations
 	\item Auctions
 	\end{itemize}
