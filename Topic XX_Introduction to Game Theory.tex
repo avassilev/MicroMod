@@ -49,7 +49,8 @@
 \hypersetup{colorlinks, urlcolor=blue, linkcolor = myred}
 
 \title{R408: Microeconomic Modelling}
-\subtitle{Topic XX: \textcolor{myred}{Introduction to Game Theory}}
+%\subtitle{Topic XX: \textcolor{myred}{Introduction to Game Theory}}
+\subtitle{\textcolor{myred}{Introduction to Game Theory}}
 \author{Andrey Vassilev}
 
 \date{} 
@@ -974,15 +975,89 @@ Scissors \> $ -1,1 $ \> $ 1,-1 $ \> $ 0,0 $
 \end{enumerate}
 \end{frame}
 
+
+\stepcounter{examplecount}
+\begin{frame}[fragile]\setcounter{slidenum}{1}
+	\frametitle{Example \arabic{examplecount}}
+	\framesubtitle{Bertrand duopoly competition (\arabic{slidenum})}
+	\begin{itemize}\itemsep1em
+		\item In some cases we need to go beyond the framework of finite games and work with an infinite pure strategy set. 
+		\item The Bertrand model provides a simple example.
+		\item There are two firms operating in a common market and producing the same good.
+		\item Market demand, represented by a relation giving quantity $q$ as a function of the price $p \geq 0$, is
+		\[q(p) = \max\{0,2-p\}. \]
+		\item Both firms have constant returns to scale technologies with the same cost per unit $c>0$, with $c$ sufficiently small (more on that later).
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]\stepcounter{slidenum}
+	\frametitle{Example \arabic{examplecount}}
+	\framesubtitle{Bertrand duopoly competition (\arabic{slidenum})}
+	\begin{itemize}\itemsep1em
+		\item The two firms simultaneously set their prices $p_1$ and $p_2$, i.e. their strategy sets are the admissible values of $p_i$, $i=1,2$.
+		\item Buyers then choose the firm with the lower price to execute their orders.
+		\item Quantity sold for Firm 1:
+		\[ q_1(p_1,p_2) = \left\{ \begin{array}{ll}
+			q(p_1) &\text{ if } p_1<p_2 \\
+			\frac{1}{2}q(p_1) &\text{ if } p_1=p_2\\
+			0 &\text{ if } p_1>p_2.
+		\end{array} \right. \]
+				\item Quantity sold for Firm 2:
+		\[ q_2(p_1,p_2) = \left\{ \begin{array}{ll}
+			0 &\text{ if } p_1<p_2 \\
+			\frac{1}{2}q(p_2) &\text{ if } p_1=p_2\\
+			q(p_2) &\text{ if } p_1>p_2.
+		\end{array} \right. \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\stepcounter{slidenum}
+	\frametitle{Example \arabic{examplecount}}
+	\framesubtitle{Bertrand duopoly competition (\arabic{slidenum})}
+	\begin{itemize}\itemsep1em
+		\item The payoff for Firm $i$ is its profit, given by 
+		\[ u_i(p_1,p_2) = p_i q_i(p_1,p_2) - c q_i(p_1,p_2) = (p_i-c) q_i(p_1,p_2). \]
+		\item The requirement of $c$ being ``sufficiently small'' should now be clear -- we want to avoid a situation where payoffs are nonpositive over the entire strategy set of a player.
+		\item What are the Nash equilibria of this game?
+		\item First, observe that $p_i < c$ cannot be a part of a Nash equilibrium profile because it is dominated by $p_i = c$.
+		\item Next, note that $p_i = c, ~ p_j > c $ is not a Nash equilibrium.
+		\begin{itemize}\setlength\itemsep{0.5em}
+			\item Choosing $p_i = c$ yields zero payoff, which is dominated by any $p_i + \varepsilon (p_j-c)$, $\varepsilon \in (0,1)$.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]\stepcounter{slidenum}
+	\frametitle{Example \arabic{examplecount}}
+	\framesubtitle{Bertrand duopoly competition (\arabic{slidenum})}
+	\begin{itemize}\itemsep1em
+		\item Then, observe that $p_i > c$ and $p_j > c$ is not a Nash equilibrium.
+		\begin{itemize}\setlength\itemsep{0.5em}
+			\item Suppose, for instance, that $p_1 \leq p_2$.
+			\item Firm 2 can make at most $(p_1-c) \frac{1}{2}q(p_1)$ (when $p_1=p_2$) or 0 when $p_1<p_2$.
+			\item If it changed its price to $p_1-\varepsilon$ for $\varepsilon>0$, its profit would be $(p_1-\varepsilon-c)q(p_1-\varepsilon)$, which is greater than $\frac{1}{2}(p_1-c) q(p_1)$ for $\varepsilon$ small enough.
+		\end{itemize}
+		\item Finally, $p_1=p_2=c$ is a Nash equilibrium, associated with zero profits.
+		\begin{itemize}\setlength\itemsep{0.5em}
+			\item Increasing $p_i$ above $c$ doesn't change anything.
+			\item Lowering $p_i$ below $c$ brings about negative profit.
+		\end{itemize}
+		\item Thus, the standard Bertrand model reproduces the competitive equilibrium outcome.
+	\end{itemize}
+\end{frame}
+
+
+
 \stepcounter{examplecount}
 \begin{frame}[fragile]\setcounter{slidenum}{1}
 \frametitle{Example \arabic{examplecount}}
 \framesubtitle{Cournot duopoly competition (\arabic{slidenum})}
 \begin{itemize}\itemsep1em
-\item In some cases we need to go beyond the framework of finite games and work with an infinite pure strategy set. 
-\item The Cournot model provides a simple example.
+\item The Cournot model provides a modification of the Bertrand setup for the case where competitors choose quantities instead of prices.
 \item There are two firms operating on a market for a single good. Firm $ i $ produces quantity $ q_i \geq 0$, $ i=1,2 $. Thus, the total quantity supplied is $ q =  q_1 + q_2 $.
-\item The price of the good is determined by demand and can be represented as a function of the total quantity supplied through the relation\footnote{Clearly, a more realistic formulation would be something like $ p = \max\{0,2-q\} $ but we use the simpler one for convenience.}
+\item The price of the good is determined by demand and can be represented as a function of the total quantity supplied through the relation\footnote{Here we use a simpler formulation for convenience instead of $ p = \max\{0,2-q\} $.}
 \[ p = 2 - q = 2 - q_1 - q_2. \]
 \item The cost per unit of the good is $ c_i > 0 $ for Firm $ i $.
 \end{itemize}
