@@ -32,10 +32,12 @@
 \setbeamertemplate{theorems}[numbered]
 
 % Reset theorem-like environments so that each is numbered separately
-\usepackage{etoolbox}
-\undef{\definition}
+%\usepackage{etoolbox}
+%\undef{\definition}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
 \theoremstyle{definition}
-\newtheorem{definition}{\translate{Definition}}
+\newtheorem{defn}{\translate{Definition}}
 
 % Change colours for theorem-like environments
 \definecolor{mygreen1}{RGB}{0,96,0}
@@ -614,7 +616,7 @@ $ B $ \> $ 0,3 $ \> $ 0,1 $ \> $ 2,0 $
 \framesubtitle{Definition}
 We introduce the following notation: if $ s_i $ is the strategy of player $ i $ in a strategy vector $ s $, then the strategies of all the other players in $ s $ will be denoted by $ s_{-i} $.\bigskip
 
-\begin{definition}[Nash equilibrium]\label{def:NashEq}
+\begin{defn}[Nash equilibrium]\label{def:NashEq}
 A strategy vector $ s^* = (s_1^*,\ldots,s_n^*) $ is a \emph{Nash equilibrium} if for each player $ i \in N $ and each strategy $ s_i \in S_i $ the following is satisfied:
 \begin{equation}
 u_i(s^*)\geq u_i(s_i,s^*_{-i}).
@@ -622,7 +624,7 @@ u_i(s^*)\geq u_i(s_i,s^*_{-i}).
 \end{equation}
 
 The payoff vector $ u(s^*) = (u_1(s*),\ldots,u_n(s^*) $ is the equilibrium payoff corresponding to Nash equilibrium $ s^* $.
-\end{definition}
+\end{defn}
 \end{frame}
 
 
@@ -649,12 +651,12 @@ The payoff vector $ u(s^*) = (u_1(s*),\ldots,u_n(s^*) $ is the equilibrium payof
 \item It is sometimes more convenient to work with best replies since they provide a natural approach to computing Nash equilibria.
 \end{itemize}
 
-\begin{definition}[Best reply]\label{def:BR}
+\begin{defn}[Best reply]\label{def:BR}
 Let $ s_{-i} $ be a strategy vector of all the players except player $ i $. Player $ i $'s strategy $ s_i $ is called a \emph{best reply} to $ s_{-i} $ if \begin{equation}
 u_i(s_i,s_{-i}) = \max_{t_i \in S_i}u_i(t_i,s_{-i}).
 \label{eq:BR}
 \end{equation}
-\end{definition}
+\end{defn}
 \end{frame}
 
 
@@ -664,9 +666,9 @@ u_i(s_i,s_{-i}) = \max_{t_i \in S_i}u_i(t_i,s_{-i}).
 \framesubtitle{}
 The following definition of a Nash equilibrium can be shown to be \textbf{equivalent} to Definition \ref{def:NashEq}:\bigskip
 
-\begin{definition}[Nash equilibrium]\label{def:NashEq2}
+\begin{defn}[Nash equilibrium]\label{def:NashEq2}
 A strategy vector $ s^* = (s_1^*,\ldots,s_n^*) $ is a \emph{Nash equilibrium} if $ s_i^* $ is a best reply to $ s_{-i}^* $ for every player $ i \in N $.
-\end{definition}
+\end{defn}
 \end{frame}
 
 
@@ -779,14 +781,14 @@ Tails \> $ 1,-1 $ \> $ -1,1 $
 \begin{frame}[fragile]\stepcounter{slidenum}
 \frametitle{Mixed strategies (\arabic{slidenum})}
 \framesubtitle{}
-\begin{definition}
+\begin{defn}
 If $ G = (N,\{S_i\}_{i \in N}, \{u_i\}_{i \in N}) $ is a finite strategic-form game, then the set \begin{equation}
 \Sigma_i := \left\{\, \sigma_i: S_i \rightarrow [0,1] \mid \sum_{s_i \in S_i}\sigma_i(s_i) = 1  \,\right\}
 \label{eq:MixedStrSet}
 \end{equation}
 is the set of mixed strategies for player $ i $. The set of mixed strategy profiles is $ \Sigma = \Sigma_1 \times \cdots \times \Sigma_n $.
 \label{def:MixedStr}
-\end{definition}\bigskip
+\end{defn}\bigskip
 
 For a finite set $ A $, we can define the set \[ \Delta(A) := \left\{\, p: A \rightarrow [0,1] \mid \sum_{a\in A}p(a) = 1  \,\right\}, \] which is called a \emph{simplex} in $ \mathbb{R}^{|A|} $. Thus, we have $ \Sigma_i = \Delta(S_i) $.
 \end{frame}
@@ -796,7 +798,7 @@ For a finite set $ A $, we can define the set \[ \Delta(A) := \left\{\, p: A \ri
 \begin{frame}[fragile]
 \frametitle{The mixed extension of a game}
 \framesubtitle{}
-\begin{definition}[Mixed extension of $ G $]
+\begin{defn}[Mixed extension of $ G $]
 Let $ G $ be a finite strategic-form game. The \emph{mixed extension} of $ G $ is the game \begin{equation}
 \Gamma := \left(N,\{\Sigma_i\}_{i \in N}, \{U_i\}_{i \in N}\right) ,
 \label{eq:MixedExtG}
@@ -807,7 +809,7 @@ U_i(\sigma) = \mathbb{E}_{\sigma}[u_i(\sigma)] = \sum_{(s_1,\ldots,s_n)\in S}u_i
 \label{eq:ExpPayoff}
 \end{equation}
 \label{def:MixedExtension}
-\end{definition}
+\end{defn}
 \end{frame}
 
 
